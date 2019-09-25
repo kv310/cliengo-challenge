@@ -16,5 +16,8 @@
   },
   "dependencies": {
     "nodemon": "^1.19.2"
+  },
+  "engines": {
+    "node": "11.x"
   }
 }
