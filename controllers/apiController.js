@@ -1,17 +1,12 @@
+var express = require('express');
 var Planes = require('../models/planesModel');
-var bodyParser = require('body-parser');
 
 module.exports = function(app) {
 
-    app.use(bodyParser.json());
-    app.use(bodyParser.urlencoded( { extended: true }));
+    app.use(express.json({ extended: true }));
 
     app.get('/api/websites/:id', (req, res) => {
-        if(req.header('token') != 123456789) {
-            res.send(401);
-            return;
-        } 
-
+        
         Planes.findById({ _id: req.params.id }, (err, planes) => {
             if(err) throw err;
 
@@ -20,12 +15,8 @@ module.exports = function(app) {
     });
 
     app.post('/api/websites', (req, res) => {
-        if(req.header('token') != 123456789) {
-            res.send(401);                          
-            return;
-        }
-
-        if (req.                body.id) {
+        
+        if (req.body.id) {
             Planes.findByIdAndUpdate(req.body.id, {
                 domain: req.body.domain,
                 ownerId: req.body.ownerId,
