@@ -2,7 +2,7 @@
   "name": "cliengo-back",
   "version": "1.0.0",
   "description": "Backend para el desafio de cliengo",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
     "start": "node app.js"
   },
