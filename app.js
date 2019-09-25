@@ -7,6 +7,7 @@ var config = require('./config');
 var auth = require('./middleware/auth');
 var setupController = require('./controllers/setupController');
 var apiController = require('./controllers/apiController');
+var frontController = require('./controllers/frontController');
 
 var port = process.env.PORT || 3000;
 
@@ -20,5 +21,6 @@ mongoose.connect(config.getDbConnectionString());
 auth(app);
 setupController(app);
 apiController(app);
+frontController(app);
 
 app.listen(port);
