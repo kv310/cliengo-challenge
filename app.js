@@ -15,8 +15,9 @@ app.use('/assets', express.static(__dirname + '/public'));
 
 app.set('view engine', 'ejs');
 
-
+console.log("Conectando a la base de datos...");
 mongoose.connect(config.getDbConnectionString());
+console.log("Conección OK!");
 
 auth(app);
 setupController(app);

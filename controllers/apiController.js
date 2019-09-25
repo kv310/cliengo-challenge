@@ -8,7 +8,10 @@ module.exports = function(app) {
     app.get('/api/websites/:id', (req, res) => {
         
         Planes.findById({ _id: req.params.id }, (err, planes) => {
-            if(err) throw err;
+            if(err) {
+                console.log(err);
+                throw err;  
+            } 
 
             res.send(planes);
         });                                                                                                                                 
@@ -24,7 +27,10 @@ module.exports = function(app) {
                 labels: req.body.labels
             }, (err, plan) => {
                 debugger;
-                if(err) throw err;
+                if(err) {
+                    console.log(err);
+                    throw err;
+                }
 
                 res.send('Plan Actualizado!');
             });
