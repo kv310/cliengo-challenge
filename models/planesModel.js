@@ -3,7 +3,6 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var planesSchema = new Schema({
-    id: Number,
     domain: String,
     leadCount: Number,
     ownerId: Number,

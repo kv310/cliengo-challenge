@@ -7,13 +7,13 @@ module.exports = function(app) {
 
     app.get('/api/websites/:id', (req, res) => {
         
-        Planes.findById({ _id: req.params.id }, (err, plan) => {
+        Planes.findById({ _id: req.params.id }, (err, planes) => {
             if(err) {
                 console.log(err);
                 throw err;  
             } 
 
-            res.send(plan);
+            res.send(planes);
         });                                                                                                                                 
     });
 
@@ -33,13 +33,14 @@ module.exports = function(app) {
                     throw err;
                 }
 
-                res.send(plan);
+                res.status(200).json(plan);
             });
         }
 
         else {
             var newPlan = Planes({
                 domain: req.body.domain,
+                leadCount: req.body.leadCount,
                 ownerId: req.body.ownerId,
                 plan: req.body.plan,
                 labels: req.body.labels 
@@ -47,8 +48,7 @@ module.exports = function(app) {
             
             newPlan.save((err, plan) => {
               if(err) throw err;
-              
-              res.send(plan);
+              res.status(201).json(plan);
             });
 
         }
